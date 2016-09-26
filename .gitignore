@@ -1,0 +1,11 @@
+# ignorar
+.idea/
+huellas/*/migrations/*
+*.pyc
+huellas/media/*
+
+
+# No ignorar!
+
+!huellas/*/migrations/__init__.py
+!huellas/media/foto_usuarios/user.jpg

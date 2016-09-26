@@ -1,0 +1,23 @@
+{% extends '_base_list.html' %}
+
+{% block titulo_pagina %}
+    Listar Roles
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    Listar Roles
+{% endblock titulo_panel %}
+
+{% block cabecera_tabla %}
+    <div style="margin-bottom: 20px" class="text-right">
+        <a type="button" class="btn btn-primary" href="{% url 'gestion_usuarios:cargar_datos' %}">
+            <i class="fa fa-upload"></i> Cargar datos
+        </a>
+        <a type="button" class="btn btn-info" href="{% url 'gestion_usuarios:exportar_datos' %}">
+            <i class="fa fa-download"></i> Exportar datos
+        </a>
+        <a type="button" class="btn btn-success" href="{% url 'gestion_usuarios:crear_rol' %}">
+            <i class="fa fa-plus"></i> Registrar Rol
+        </a>
+    </div>
+{% endblock cabecera_tabla %}

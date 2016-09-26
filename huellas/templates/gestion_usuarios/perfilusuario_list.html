@@ -1,0 +1,57 @@
+{% extends '_base_list.html' %}
+
+{% block titulo_pagina %}
+    Listar Usuarios
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    Listar Usuarios
+{% endblock titulo_panel %}
+
+{% block cabecera_tabla %}
+    <div style="margin-bottom: 20px" class="text-right">
+        <a type="button" class="btn btn-success" href="{% url 'gestion_usuarios:crear_usuario' %}">
+            <i class="fa fa-plus"></i> Crear Usuario
+        </a>
+    </div>
+{% endblock cabecera_tabla %}
+
+{% block confirm_modal %}
+    <div class="modal fade" id="modal-desactivate">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Cambio de estado:</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea cambiar el estado de este usuario?
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                    <a id="no-cambiar-este-id" href="" class="btn btn-sm btn-success">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-eliminar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Eliminar:</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro que desea eliminar este usuario? Recuerde que no podrá recuperar su información
+                </div>
+                <div class="modal-footer">
+                    <a href="javascript:;" class="btn btn-sm btn-white" data-dismiss="modal">Cancelar</a>
+                    <a id="no-cambiar-este-id" href="" class="btn btn-sm btn-success">Aceptar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock confirm_modal%}

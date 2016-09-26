@@ -1,0 +1,27 @@
+.required label:after{
+    content: ' *';
+}
+
+.html5buttons {
+    float: right;
+}
+
+.dataTables_length {
+    float: left;
+}
+
+.dataTables_filter label {
+    margin-right: 5px;
+}
+
+.form-control-feedback{
+    top: 51px !important;
+}
+
+.display-none{
+    display: none;
+}
+
+.pointer-events {
+    pointer-events: none;
+}

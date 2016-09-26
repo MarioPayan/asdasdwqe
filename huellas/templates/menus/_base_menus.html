@@ -1,0 +1,38 @@
+{% load menuware %}
+<li>
+    <a href="{% url 'inicio' %}"><i class="fa fa-home"></i><span>Inicio</span></a>
+</li>
+
+{% get_menu "LEFT_NAV_MENU" as left_menu %}
+{% for item in left_menu %}
+    <li class="{% if item.submenu %}has-sub{% endif %} {% if item.selected %} active {% endif %}">
+        <a href="{{item.url}}">            
+            {% if item.icon %}<i class="{{ item.icon }}"></i>{% endif %}<span>{{item.name}}</span>
+    {% if item.submenu %}
+            <b class="caret pull-right"></b>
+        </a>
+        <ul class="sub-menu">
+        {% for menu in item.submenu %}
+            <li class="{% if menu.submenu %}has-sub{% endif %} {% if menu.selected %} active {% endif %}">
+                <a href="{{menu.url}}">{{menu.name}}
+                {% if menu.submenu %}
+                        <b class="caret pull-right"></b>
+                    </a>
+                    <ul class="sub-menu">
+                    {% for sub2menu in menu.submenu %}
+                        <li class="{% if sub2menu.selected %} active {% endif %}">
+                            <a href="{{sub2menu.url}}">{{sub2menu.name}}</a>
+                        </li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        </a>
+    {% endif %}
+    </li>
+{% endfor %}

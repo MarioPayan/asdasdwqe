@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    {% if object %}Editar{% else %}Registrar{% endif %} Rol
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    {% if object %}Editar{% else %}Registrar{% endif %} Rol
+{% endblock titulo_panel %}
+
+{% block css %}
+    <link type="text/css" rel="stylesheet" href="{% static 'css/plugins/chosen/chosen.min.css' %}">
+{% endblock css %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/validaciones/form-validations.js'%}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins/chosen/chosen.jquery.min.js'%}"></script>
+    <script>
+        $(document).ready(function(){
+            $("select.chosen").chosen({
+                width: "100%",
+                no_results_text: "No se encontraron resultados para:"
+            });
+        });
+    </script>
+{% endblock javascript %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <form method="POST" class="form-horizontal" enctype="multipart/form-data" id="rady-form">{% csrf_token %}
+                {% bootstrap_form form %}
+                <div class="text-center">
+                    {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary"%}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock contenido_panel %}

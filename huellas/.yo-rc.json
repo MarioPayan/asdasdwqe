@@ -1,0 +1,8 @@
+{
+  "generator-django-rady": {
+  	"projectName": "huellas",
+    "djangoApps": {},
+  	"rootUrlConfPath": "config/urls.py",
+    "installedAppsPath": "config/settings/installed_apps.py"
+  }
+}

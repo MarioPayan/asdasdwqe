@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    Detalles usuario
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    Detalles usuario
+{% endblock titulo_panel %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="m-b-md">
+                <a class="btn btn-warning btn-md pull-right" href="{% url 'gestion_usuarios:listar_usuarios' %}"><i class="fa fa-arrow-left"></i> Regresar </a>
+                <h2>{{ object.get_full_name }}</h2>
+            </div>
+        </div>
+        <div class="col-md-12 ">
+            <div class="col-md-2 text-center">
+                <img src="{{ object.get_img_url }}" class="img-responsive img-thumbnail" >
+            </div>
+            <div class="col-md-5 ">
+                <dl">
+
+                    <dt>Nombre:</dt> <dd>{{ object.first_name }}</dd>
+                    <dt>Apellidos:</dt> <dd>{{ object.last_name }}</dd>
+                    <dt>Nombre usuario:</dt> <dd>{{ object.username}}</dd>
+                    <dt>Tipo usuario:</dt> <dd>{{ object.get_tipo_usuario_display }}</dd>
+                    <dt>Tipo Identificación:</dt> <dd>{{ object.get_tipo_id_display }}</dd>
+                    <dt>Identificación:</dt> <dd>{{ object.identificacion }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-5">
+                <dl">
+                    <dt>Correo electrónico:</dt> <dd>{{ object.email }}</dd>
+                    <dt>Último acceso al sistema:</dt> <dd>{% if perfilusuario.last_login  %}{{ perfilusuario.last_login }}{% else %}Nunca ha accedido{% endif %}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_panel %}

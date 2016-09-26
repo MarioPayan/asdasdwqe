@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load split %}
+
+{% block titulo_pagina %}
+    Detalles Auditoría
+{% endblock titulo_pagina %}
+
+{% block titulo_seccion %}
+    Detalles Auditoría
+{% endblock titulo_seccion %}
+
+{% block titulo_panel %}
+    Auditoría
+{% endblock titulo_panel %}
+
+{% block css %}
+    <style>
+    dl > dd{
+        word-break: break-all;
+    }
+    </style>
+{% endblock css %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="m-b-md">
+                <a class="btn btn-warning btn-md pull-right" href="{% url 'auditoria:listar' %}"><i class="fa fa-arrow-left"></i> Regresar </a>
+                <h2>{{ object.accion }}</h2>
+            </div>
+        </div>
+        <div class="col-md-12 ">
+            <div class="col-md-3 col-md-offset-1">
+                <h4>Datos de la auditoría</h4>
+                <dl>
+                    <dt>Acción Sobre el Sistema: </dt><dd>{{ object.accion }}</dd>
+                    <dt>Usuario: </dt><dd>{{ object.usuario }}</dd>
+                    <dt>Tipo de usuario: </dt><dd>{{ object.tipo_usuario }}</dd>
+                    <dt>Ip Usuario: </dt><dd>{{ object.ip_cliente }}</dd>
+                    <dt>Fecha: </dt><dd>{{ object.fecha_log }}</dd>
+                    <dt>Hora: </dt><dd>{{ object.hora_log }}</dd>
+                </dl>
+            </div>
+            <div class="col-md-3">
+                <h4>Objeto sin actualizar</h4>
+                <dl>
+                    {% for data_old in old %}
+                        {% with data_old|split:":" as data %}
+                            <dt>{{ data.0 }} </dt><dd>{{ data.1 }}</dd>
+                        {% endwith %}
+                    {% endfor %}
+                </dl>
+            </div>
+            <div class="col-md-3">
+                <h4>Objeto actualizado</h4>
+                <dl>
+                    {% for data_old in old %}
+                        {% with data_old|split:":" as data %}
+                            <dt>{{ data.0 }} </dt><dd>{{ data.1 }}</dd>
+                        {% endwith %}
+                    {% endfor %}
+                </dl>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_panel %}

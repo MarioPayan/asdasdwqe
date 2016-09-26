@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    {% if object %}Editar{% else %}Crear{% endif %} Usuario
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    {% if object %}Editar{% else %}Crear{% endif %} Usuario
+{% endblock titulo_panel %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/validaciones/form-validations.js'%}"></script>
+    <script>
+        $(document).ready(function(){
+            $("[name='groups']").select2({
+                maximumSelectionLength: 1
+            });
+        });
+    </script>
+{% endblock javascript %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <form method="POST" class="form-horizontal" enctype="multipart/form-data" id="rady-form">{% csrf_token %}
+                {% bootstrap_field form.first_name %}
+                {% bootstrap_field form.last_name %}
+                {% bootstrap_field form.username show_help=False %}
+                {% bootstrap_field form.groups show_help=False %}
+                {% if not object %}
+                {% bootstrap_field form.password %}
+                {% bootstrap_field form.confirmar_pass %}
+                {% endif %}
+                {% bootstrap_field form.tipo_id %}
+                {% bootstrap_field form.identificacion %}
+                {% bootstrap_field form.email %}
+                {% bootstrap_field form.foto %}
+                <div class="text-center">
+                    {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary"%}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock contenido_panel %}

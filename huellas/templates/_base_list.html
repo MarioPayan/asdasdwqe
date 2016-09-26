@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    SOBREESCRIBIR TÍTULO
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    SOBREESCRIBIR TÍTULO PANEL
+{% endblock titulo_panel %}
+
+{% block css %}
+    <style>
+        span.dtr-title{
+            vertical-align: top;
+        }
+        table.dataTable>tbody>tr.child ul.dropdown-menu{
+            display: none;
+        }
+        table.dataTable>tbody>tr.child .open > ul.dropdown-menu{
+            display: block;
+        }
+        table .dropdown-menu{
+            left: inherit;
+            right: 0;
+        }
+    </style>
+{% endblock css %}
+
+{% block contenido_panel %}
+    {% block cabecera_tabla %}
+
+    {% endblock cabecera_tabla %}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-bordered table-hover dataTable" id="datatable-observatorio2">
+
+            </table>
+        </div>
+    </div>
+    {% block pie_tabla %}
+
+    {% endblock pie_tabla %}
+{% endblock contenido_panel %}
+
+{% block javascript %}
+    {% block custom_buttons %}
+        <!-- Usar este bloque para personalizar los botones de copiar, csv, pdf, print, etc. -->
+    {% endblock custom_buttons %}
+
+    {% block confirm_modal %}
+        <!-- Usar este bloque para definir un modal de confirmación para alguna funcionalidad deseada, luego pasar
+         ese id mediante el valor confirm_modal en la vista -->
+    {% endblock confirm_modal %}
+    <script>
+        var column_defs = {{ column_defs | safe }};
+        var opciones = {{ show_options|yesno:"true,false" }};
+    </script>
+    <script src="{% static 'js/personalizado/datatables/generar_datatable.js' %}"></script>
+{% endblock javascript %}

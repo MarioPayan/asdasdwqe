@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block titulo_pagina %}
+    Eliminación de registro
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    Eliminación de registro
+{% endblock titulo_panel %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <form action="" method="post">
+                <h3>¿Está seguro que desea eliminar el registro {{ object.id }}?</h3>
+                {% csrf_token %}
+                <a class="btn btn-danger" href="{% url 'auditoria:listar' %}">Cancelar</a>
+                <input class="btn btn-primary" type="submit" value="Confirmar"/>
+            </form>
+        </div>
+    </div>
+{% endblock contenido_panel %}
