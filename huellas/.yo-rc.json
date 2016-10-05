@@ -1,8 +1,199 @@
 {
   "generator-django-rady": {
-  	"projectName": "huellas",
-    "djangoApps": {},
-  	"rootUrlConfPath": "config/urls.py",
+    "projectName": "huellas",
+    "djangoApps": {
+      "personas": {
+        "models": {
+          "Persona": {
+            "className": "Persona",
+            "choices": [],
+            "modelMenuName": "Personas",
+            "modelVerboseNameS": "Persona",
+            "modelVerboseNameP": "Personas",
+            "appNameLowerCase": "personas",
+            "appDir": "personas",
+            "classNameLowerCase": "persona",
+            "fields": [
+              {
+                "fieldType": "Text",
+                "verboseName": "",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "max_length": "40",
+                "name": "nombres"
+              },
+              {
+                "fieldType": "Text",
+                "verboseName": "",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "max_length": "40",
+                "name": "apellidos"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "Tipo de identificación",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "choices": "\"CÉDULA DE CIUDADANÍA\", \"TARJETA DE IDENTIDAD\", \"CÉDULA DE EXTRANJERO\", \"PASAPORTE\"",
+                "name": "tipo_id"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "Número de identificación",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "choices": "",
+                "name": "identificacion"
+              },
+              {
+                "fieldType": "Date",
+                "verboseName": "Fecha de nacimiento",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "auto_now": false,
+                "auto_now_add": false,
+                "name": "fecha_nacimiento"
+              },
+              {
+                "fieldType": "Text",
+                "verboseName": "Lugar de nacimiento",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "max_length": "40",
+                "name": "lugar_nacimiento"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "choices": "\"MASCULINO\", \"FEMENINO\"",
+                "name": "sexo"
+              },
+              {
+                "fieldType": "Text",
+                "verboseName": "",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "max_length": "40",
+                "name": "nacionalidad"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "Estatura en cm",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "choices": "",
+                "name": "estatura"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "Peso en kg",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "choices": "",
+                "name": "peso"
+              },
+              {
+                "fieldType": "Text",
+                "verboseName": "Dirección de residencia",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "max_length": "80",
+                "name": "direccion_residencia"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "",
+                "blank": false,
+                "unique": false,
+                "default": "}",
+                "helpText": "",
+                "choices": "",
+                "name": "telefono_fijo"
+              },
+              {
+                "fieldType": "Integer",
+                "nullable": false,
+                "verboseName": "",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "choices": "",
+                "name": "telefono_celular"
+              },
+              {
+                "fieldType": "Text",
+                "verboseName": "Correo electrónico",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "max_length": "40",
+                "name": "correo_electronico"
+              },
+              {
+                "fieldType": "Date",
+                "verboseName": "Fecha de registro",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "auto_now": false,
+                "auto_now_add": true,
+                "name": "fecha_registro"
+              },
+              {
+                "fieldType": "Date",
+                "verboseName": "Fecha última actualización",
+                "blank": false,
+                "unique": false,
+                "default": "",
+                "helpText": "",
+                "auto_now": true,
+                "auto_now_add": false,
+                "name": "fecha_update"
+              }
+            ],
+            "managed": false,
+            "abstract": false,
+            "ordering": "",
+            "modelMenuIcon": "fa-group"
+          }
+        }
+      }
+    },
+    "rootUrlConfPath": "config/urls.py",
     "installedAppsPath": "config/settings/installed_apps.py"
   }
 }

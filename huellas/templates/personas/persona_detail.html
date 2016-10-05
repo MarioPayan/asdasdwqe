@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    Detalles Persona
+{% endblock titulo_pagina %}
+
+{% block titulo_seccion %}
+    Detalles Persona
+{% endblock titulo_seccion %}
+
+{% block titulo_panel %}
+    Persona
+{% endblock titulo_panel %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="m-b-md">
+                <a class="btn btn-warning btn-md pull-right" href="{% url 'personas:listar_persona' %}"><i class="fa fa-arrow-left"></i> Regresar </a>
+                <h2>{{object.nombres}}</h2>
+            </div>
+        </div>
+        <div class="col-md-12 ">
+            <div class="col-md-6 col-md-offset-1">
+                <dl>
+                    <dt></dt>  <dd>{{ object.nombres }}</dd> 
+                    <dt></dt>  <dd>{{ object.apellidos }}</dd> 
+                    <dt>Tipo de identificación</dt>  <dd>{{ object.tipo_id }}</dd> 
+                    <dt>Número de identificación</dt>  <dd>{{ object.identificacion }}</dd> 
+                    <dt>Fecha de nacimiento</dt>  <dd>{{ object.fecha_nacimiento }}</dd> 
+                    <dt>Lugar de nacimiento</dt>  <dd>{{ object.lugar_nacimiento }}</dd> 
+                    <dt></dt>  <dd>{{ object.sexo }}</dd> 
+                    <dt></dt>  <dd>{{ object.nacionalidad }}</dd> 
+                    <dt>Estatura en cm</dt>  <dd>{{ object.estatura }}</dd> 
+                    <dt>Peso en kg</dt>  <dd>{{ object.peso }}</dd> 
+                    <dt>Dirección de residencia</dt>  <dd>{{ object.direccion_residencia }}</dd> 
+                    <dt></dt>  <dd>{{ object.telefono_fijo }}</dd> 
+                    <dt></dt>  <dd>{{ object.telefono_celular }}</dd> 
+                    <dt>Correo electrónico</dt>  <dd>{{ object.correo_electronico }}</dd> 
+                    <dt>Fecha de registro</dt>  <dd>{{ object.fecha_registro }}</dd> 
+                    <dt>Fecha última actualización</dt>  <dd>{{ object.fecha_update }}</dd> 
+                </dl>
+            </div>
+        </div>
+    </div>
+{% endblock contenido_panel %}

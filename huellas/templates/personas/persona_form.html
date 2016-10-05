@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block titulo_pagina %}
+    {% if edicion %}Editar{% else %}Crear{% endif %} Persona
+{% endblock titulo_pagina %}
+
+{% block titulo_panel %}
+    Persona
+{% endblock titulo_panel %}
+
+{% block titulo_seccion %}
+    {% if edicion %}Editar{% else %}Crear{% endif %} Persona
+{% endblock titulo_seccion %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'js/validaciones/form-validations.js'%}"></script>
+{% endblock javascript %}
+
+{% block contenido_panel %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <form method="POST" class="form-horizontal" enctype="multipart/form-data" id="rady-form">{% csrf_token %}
+                {% bootstrap_form form %}
+                <div class="text-center">
+                    {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary"%}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock contenido_panel %}
