@@ -1,6 +1,12 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+def zip_path(self, *args):
+    folder_name = str(self.identificacion) + "-" + str(self.tipo_id)
+    file_name = "huellas.zip"
+    url = "huellas/" + folder_name + "/" + file_name
+    return url
+    
 
 class Persona(models.Model):
     tipo_id_choices = (
@@ -32,12 +38,42 @@ class Persona(models.Model):
     fecha_registro = models.DateField(verbose_name="Fecha de registro", auto_now_add=True)
     fecha_update = models.DateField(verbose_name="Fecha última actualización", auto_now=True)
     estado = models.BooleanField(default=True)
+    
+    zip_file = models.FileField(upload_to=zip_path, null=True, blank=True)
+    
+    left_little_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_ring_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_middle_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_index_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_thumb_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_little_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_ring_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_middle_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_index_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_thumb_finger = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    
+    left_little_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_ring_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_middle_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_index_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    left_thumb_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_little_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_ring_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_middle_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_index_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
+    right_thumb_finger_display = models.ImageField(null=True, blank=True, default="huellas/missing.jpg")
 
     def get_absolute_url(self):
         return reverse('personas:listar_persona')
 
     def __str__(self):
         return str(self.nombres)
+        
+    def left_little_finger_display_url(self):
+        if not self.left_little_finger_display:
+            return settings.MEDIA_URL + "fotos_usuario/user.png"
+        else:
+            return self.left_little_finger_display.url
 
     class Meta:
         permissions = (

@@ -9,9 +9,12 @@ from auditoria.loggers import (LoggerCreatedMixin, LoggerUpdatedMixin, LoggerGet
                                LoggerDeleteMixin)
 from utilities.mixins import MessageMixin, GetToPostMixin
 from django.contrib import messages
+from django.conf import settings
 
 from .models import Persona
 from .forms import PersonaForm
+
+import zipfile
 
 
 class PersonaCreateView(MessageMixin, PermissionRequiredMixin, LoggerCreatedMixin, CreateView):
@@ -21,6 +24,42 @@ class PersonaCreateView(MessageMixin, PermissionRequiredMixin, LoggerCreatedMixi
     raise_exception = True
     mensaje_log = "Creación de Persona"
     mensaje_exito = "Persona creado correctamente"
+    print(settings.MEDIA_ROOT)
+    
+    def form_valid(self, form):
+        identificador = str(form.instance.identificacion) + "-" + str(form.instance.tipo_id)
+        
+        form.instance.left_little_finger = "huellas/" + identificador + "/LeftLittle.jp2"
+        form.instance.left_ring_finger = "huellas/" + identificador + "/LeftRingFinger.jp2"
+        form.instance.left_middle_finger = "huellas/" + identificador + "/LeftMiddleFinger.jp2"
+        form.instance.left_index_finger = "huellas/" + identificador + "/LeftIndexFinger.jp2"
+        form.instance.left_thumb_finger = "huellas/" + identificador + "/LeftThumb.jp2"
+        form.instance.right_little_finger = "huellas/" + identificador + "/RightLittle.jp2"
+        form.instance.right_ring_finger = "huellas/" + identificador + "/RightRingFinger.jp2"
+        form.instance.right_middle_finger = "huellas/" + identificador + "/RightMiddleFinger.jp2"
+        form.instance.right_index_finger = "huellas/" + identificador + "/RightIndexFinger.jp2"
+        form.instance.right_thumb_finger = "huellas/" + identificador + "/RightThumb.jp2"
+        
+        form.instance.left_little_finger_display = "huellas/" + identificador + "/LeftLittle.jpg"
+        form.instance.left_ring_finger_display = "huellas/" + identificador + "/LeftRingFinger.jpg"
+        form.instance.left_middle_finger_display = "huellas/" + identificador + "/LeftMiddleFinger.jpg"
+        form.instance.left_index_finger_display = "huellas/" + identificador + "/LeftIndexFinger.jpg"
+        form.instance.left_thumb_finger_display = "huellas/" + identificador + "/LeftThumb.jpg"
+        form.instance.right_little_finger_display = "huellas/" + identificador + "/RightLittle.jpg"
+        form.instance.right_ring_finger_display = "huellas/" + identificador + "/RightRingFinger.jpg"
+        form.instance.right_middle_finger_display = "huellas/" + identificador + "/RightMiddleFinger.jpg"
+        form.instance.right_index_finger_display = "huellas/" + identificador + "/RightIndexFinger.jpg"
+        form.instance.right_thumb_finger_display = "huellas/" + identificador + "/RightThumb.jpg"
+        
+        self.object = form.save()
+        
+        path_to_extract = settings.MEDIA_ROOT + "/huellas/" + identificador + "/"
+        path_to_zip = path_to_extract + "huellas.zip"
+        
+        with zipfile.ZipFile(path_to_zip) as zip_ref:
+            zip_ref.extractall(path_to_extract)
+        
+        return super(PersonaCreateView, self).form_valid(form)
 
 
 class PersonaUpdateView(MessageMixin, PermissionRequiredMixin, LoggerUpdatedMixin, UpdateView):

@@ -3,9 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
-# Create your models here.
-
-
+    
 class PerfilUsuario(AbstractUser):
     TIPO_IDENTIDAD = (
         (0, 'CÉDULA DE CIUDADANÍA'),

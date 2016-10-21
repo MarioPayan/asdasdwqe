@@ -21,18 +21,18 @@ class PersonaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(PersonaForm, self).__init__(*args, **kwargs)
         self.fields['fecha_nacimiento'].widget = MyDateWidget()
-        self.fields['nombres'].widget.attrs.update(self.letras_validation)
-        self.fields['apellidos'].widget.attrs.update(self.letras_validation)
+        #self.fields['nombres'].widget.attrs.update(self.letras_validation)
+        #self.fields['apellidos'].widget.attrs.update(self.letras_validation)
         self.fields['identificacion'].widget.attrs.update({
             'min': 0,
             'maxlength': 15,
         })
         self.fields['estatura'].widget.attrs.update(self.minymax_estatura_peso)
-        self.fields['telefono_fijo'].widget.attrs.update(self.length_telefonos)
-        self.fields['telefono_celular'].widget.attrs.update(self.length_telefonos)
+        #self.fields['telefono_fijo'].widget.attrs.update(self.length_telefonos)
+        #self.fields['telefono_celular'].widget.attrs.update(self.length_telefonos)
 
     class Meta:
         model = Persona
         fields = ['nombres', 'apellidos', 'tipo_id', 'identificacion', 'fecha_nacimiento', 'lugar_nacimiento', 'sexo',
                   'nacionalidad', 'estatura', 'peso', 'direccion_residencia', 'telefono_fijo', 'telefono_celular',
-                  'correo_electronico']
+                  'correo_electronico', 'zip_file']

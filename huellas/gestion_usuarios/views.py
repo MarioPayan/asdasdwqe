@@ -6,6 +6,7 @@ from django.views.generic import CreateView, UpdateView, View, DetailView, Delet
 from django.shortcuts import get_object_or_404, redirect
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib import messages
+from django.conf import settings
 
 from utilities.datatables_tools.datatables_tools import DatatablesListView
 from .mixins import SuccessRolMixin
@@ -22,7 +23,7 @@ class PerfilUsuarioCreateView(MessageMixin, PermissionRequiredMixin, LoggerCreat
         Vista de creación de usuarios con permisos, mixin de mensaje para registro exitoso, mixin de auditoría y método
         form_valid para asignar el password al usuario que se está creando
     """
-
+    
     model = PerfilUsuario
     permission_required = "gestion_usuarios.add_perfilusuario"
     raise_exception = True
@@ -33,6 +34,8 @@ class PerfilUsuarioCreateView(MessageMixin, PermissionRequiredMixin, LoggerCreat
     def form_valid(self, form):
         form.instance.set_password(form.instance.password)
         return super(PerfilUsuarioCreateView, self).form_valid(form)
+        
+
 
 
 class EditarPerfilUpdateView(MessageMixin, LoginRequiredMixin, UserPassesTestMixin, LoggerUpdatedMixin, UpdateView):
